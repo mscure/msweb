@@ -23,7 +23,7 @@ $form-group-margin-bottom: 30px !default;
 
 
 // Mixin
-@mixin fh5co-translateX($translatex) {
+@mixin translateX($translatex) {
 	-moz-transform: translateX($translatex);
 	-webkit-transform: translateX($translatex);
 	-ms-transform: translateX($translatex);
@@ -121,7 +121,7 @@ body {
 	color: #848484;
 	font-weight: 300;
 	overflow-x: hidden;
-	&.fh5co-offcanvas {
+	&.offcanvas {
 		overflow: hidden;
 	}
 }
@@ -165,24 +165,24 @@ figure {
   background: $brand-selection-color;
 }
 
-#fh5co-header{
+#header{
 	position: relative;
 	margin-bottom: 0;
 	z-index: 9999999;
 }
 
-.fh5co-cover,
-.fh5co-hero {
+.cover,
+.hero {
 	position: relative;
 	height: 800px;
 	// font-weight: 300;
 	@media screen and (max-width :$screen-sm) {
 		height: 700px;
 	}
-	&.fh5co-hero-2{
+	&.hero-2{
 		height: 600px;
 
-		.fh5co-overlay{
+		.overlay{
 			position: absolute !important;
 			width: 100%;
 			top: 0;
@@ -195,7 +195,7 @@ figure {
 		}
 	}
 }
-.fh5co-overlay{
+.overlay{
 	position: absolute !important;
 	width: 100%;
 	top: 0;
@@ -207,7 +207,7 @@ figure {
 	background: rgba(66,64,64,.9);
 }
 
-.fh5co-cover{
+.cover{
 	background-size: cover;
 	position: relative;
 	@media screen and (max-width: $screen-sm) {
@@ -218,7 +218,7 @@ figure {
 		padding: 1em 5em;
 		opacity: .9;
 	}
-	&.fh5co-cover_2{
+	&.cover_2{
 		height: 600px;
 		@media screen and (max-width: $screen-sm) {
 			heifght: inherit;
@@ -266,7 +266,7 @@ figure {
 					}
 				}
 
-				&.fh5co-site-name{
+				&.site-name{
 					padding-bottom: 2px;
 					border-bottom: 1px solid rgba($brand-white,.7);
 				}
@@ -377,7 +377,7 @@ figure {
 	border-left-color: #ccc;
 }
 
-#fh5co-header-section{
+#header-section{
 	padding:0;
 	position: absolute;
 	top: 0;
@@ -391,7 +391,7 @@ figure {
 	float: left;
 	width: 100%;
 }
-#fh5co-logo{
+#logo{
 	position: relative;
 	z-index: 2;
 	font-size: 28px;
@@ -418,7 +418,7 @@ figure {
 	
 }
 
-#fh5co-menu-wrap {
+#menu-wrap {
 	position: relative;
 	z-index: 2;
 	display: block;
@@ -428,7 +428,7 @@ figure {
 		padding: 1em .75em;
 	}
 }
-#fh5co-primary-menu {
+#primary-menu {
 	> li {
 		> ul {
 			li {
@@ -471,7 +471,7 @@ figure {
 		}
 	}	
 }
-#fh5co-primary-menu .fh5co-sub-menu {
+#primary-menu .sub-menu {
 	padding:10px 7px 10px;
 	background: $brand-white;
 	left: 0;
@@ -485,14 +485,14 @@ figure {
 	-o-box-shadow:0 5px 15px rgba(0,0,0,0.15);
 	box-shadow:0 5px 15px rgba(0,0,0,0.15);
 	> li {
-		> .fh5co-sub-menu {
+		> .sub-menu {
 			left: 100%;
 		}	
 	}
 	
 }
 
-#fh5co-primary-menu .fh5co-sub-menu:before {
+#primary-menu .sub-menu:before {
 	position:absolute;
 	top:-9px;
 	left:20px;
@@ -501,7 +501,7 @@ figure {
 	content:'';
 }
 
-#fh5co-primary-menu .fh5co-sub-menu:after {
+#primary-menu .sub-menu:after {
 	position:absolute;
 	top:-8px;
 	left:21px;
@@ -514,12 +514,12 @@ figure {
 	content:'';
 }
 
-#fh5co-primary-menu .fh5co-sub-menu .fh5co-sub-menu:before {
+#primary-menu .sub-menu .sub-menu:before {
 	top:6px;
 	left:100%;
 }
 
-#fh5co-primary-menu .fh5co-sub-menu .fh5co-sub-menu:after {
+#primary-menu .sub-menu .sub-menu:after {
 	top:7px;
 	right:100%;
 	border: none!important;
@@ -536,7 +536,7 @@ figure {
 		display:none;	
 	}
 }
-#fh5co-primary-menu .fh5co-sub-menu a {
+#primary-menu .sub-menu a {
 	letter-spacing: 0;
 	padding:0 15px;
 	font-size:18px;
@@ -549,18 +549,18 @@ figure {
 	}
 }
 
-#fh5co-work-section,
-#fh5co-services-section,
-#fh5co-content-section,
-#fh5co-work-section_2,
-#fh5co-blog-section{
+#work-section,
+#services-section,
+#content-section,
+#work-section_2,
+#blog-section{
 	padding: 7em 0;
 	@media screen and (max-width: $screen-sm) {
 		padding: 4em 0;
 	}
 
 }
-.fh5co-section-gray{
+.section-gray{
 	background: rgba($brand-black,.04);
 }
 
@@ -586,7 +586,7 @@ figure {
 	}
 }
 
-.fh5co-grid{
+.grid{
 	height: 302px;
 	background-size: cover;
 	background-position: center center;
@@ -657,7 +657,7 @@ figure {
 }
 
 
-#fh5co-services, #fh5co-about, #fh5co-contact {
+#services, #about, #contact {
 	padding: 7em 0;
 	@media screen and (max-width: $screen-sm) {
 		padding: 4em 0;
@@ -665,8 +665,8 @@ figure {
 }
 
 
-#fh5co-services {
-	.fh5co-number {
+#services {
+	.number {
 		font-size: 30px;
 		color: $brand-secondary;
 		position: relative;
@@ -684,7 +684,7 @@ figure {
 
 		}
 	}
-	.fh5co-icon {
+	.icon {
 		margin-bottom: 30px;
 		margin-top: 50px;
 		position: relative;
@@ -703,7 +703,7 @@ figure {
 	}
 }
 
-#fh5co-contact {
+#contact {
 	.contact-info{
 		margin: 0;
 		padding: 0;
@@ -754,7 +754,7 @@ figure {
 	}
 }
 
-.fh5co-testimonial{
+.testimonial{
 	position: relative;
 	background: $brand-white;
 	padding: 4em 0;
@@ -808,7 +808,7 @@ figure {
 	}
 }
 
-.fh5co-blog{
+.blog{
 	margin-bottom: 60px;
 	a{
 		img{
@@ -864,7 +864,7 @@ figure {
 	}
 }
 
-#fh5co-start-project-section{
+#start-project-section{
 	padding: 7em 0;
 	background: #F64E8B;
 	h2{
@@ -894,7 +894,7 @@ figure {
 	}
 }
 
-.fh5co-social-icons {
+.social-icons {
 	> a {
 		padding: 4px 10px;
 		color: $brand-primary;
@@ -964,27 +964,27 @@ figure {
 
 
 
-#fh5co-wrapper {
+#wrapper {
 	overflow-x: hidden;
 	position: relative;
 }
-.fh5co-offcanvas {
+.offcanvas {
 	overflow: hidden;
-	#fh5co-wrapper {
+	#wrapper {
 		overflow: hidden!important;
 	}
 }
 
-#fh5co-page {
+#page {
 	position: relative;
 	@include transition(.5s);
-	.fh5co-offcanvas & {
-		@include fh5co-translateX(-240px);
+	.offcanvas & {
+		@include translateX(-240px);
 	}
 }
 
 // offcanvas
-#fh5co-menu-wrap {
+#menu-wrap {
 	@media screen and (max-width: $screen-sm) {
 		display: none;
 	}
@@ -1016,7 +1016,7 @@ figure {
 					color: $brand-primary;
 				}
 			}
-			> .fh5co-sub-menu {
+			> .sub-menu {
 				margin-top: 9px;
 				padding-left: 20px;
 			}
@@ -1026,7 +1026,7 @@ figure {
 				}
 			}
 		}
-		.fh5co-sub-menu {
+		.sub-menu {
 			display: block!important;
 		}
 	}
@@ -1035,7 +1035,7 @@ figure {
 
 
 // Burger Menu
-.fh5co-nav-toggle {
+.nav-toggle {
  
   cursor: pointer;
   text-decoration: none;
@@ -1090,22 +1090,22 @@ figure {
   }
 }
 
-.fh5co-nav-toggle i::before {
+.nav-toggle i::before {
   top: -7px;
 }
-.fh5co-nav-toggle i::after {
+.nav-toggle i::after {
   bottom: -7px;
 }
-.fh5co-nav-toggle:hover i::before {
+.nav-toggle:hover i::before {
   top: -10px;
 }
-.fh5co-nav-toggle:hover i::after {
+.nav-toggle:hover i::after {
   bottom: -10px;
 }
-.fh5co-nav-toggle.active i {
+.nav-toggle.active i {
 	background: transparent;
 }
-.fh5co-nav-toggle.active i::before {
+.nav-toggle.active i::before {
   top:0;
   -webkit-transform: rotateZ(45deg);
      -moz-transform: rotateZ(45deg);
@@ -1113,7 +1113,7 @@ figure {
        -o-transform: rotateZ(45deg);
           transform: rotateZ(45deg);
 }
-.fh5co-nav-toggle.active i::after {
+.nav-toggle.active i::after {
   bottom:0;
   -webkit-transform: rotateZ(-45deg);
      -moz-transform: rotateZ(-45deg);
@@ -1121,7 +1121,7 @@ figure {
        -o-transform: rotateZ(-45deg);
           transform: rotateZ(-45deg);
 }
-.fh5co-nav-toggle {
+.nav-toggle {
   	position: absolute;
   	top: 0px;
 	right: 0px;
@@ -1200,7 +1200,7 @@ figure {
 .js #loader { 
 	display: block; position: absolute; left: 100px; top: 0; 
 }
-.fh5co-loader {
+.loader {
 	position: fixed;
 	left: 0px;
 	top: 0px;
