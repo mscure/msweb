@@ -36,3 +36,8 @@ https://github.com/briancherne/jquery-hoverIntent
 Stellar Parallax
 http://markdalgleish.com/projects/stellar.js/
 
+
+
+
+
+ 
