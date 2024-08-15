@@ -1,0 +1,145 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg,purple, red, orange, yellow, green, blue, indigo, purple, red);
+    background-size: 800% 800%;
+    animation: GradientAnimation 30s linear infinite;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+@keyframes GradientAnimation {
+    0% {
+        background-position: 0% 50%;
+        color: red;
+    }
+    14% {
+        background-position: 14% 50%;
+        color: purple;
+    }
+    28% {
+        background-position: 28% 50%;
+        color: indigo;
+    }
+    42% {
+        background-position: 42% 50%;
+        color: blue;
+    }
+    56% {
+        background-position: 56% 50%;
+        color: green;
+    }
+    70% {
+        background-position: 70% 50%;
+        color: yellow;
+    }
+    84% {
+        background-position: 84% 50%;
+        color: orange;
+    }
+    100% {
+        background-position: 100% 50%;
+        color: red;
+    }
+}
+
+div {
+    font-size: 1rem;
+    animation: TextAnimation 30s linear infinite;
+}
+
+@keyframes TextAnimaton {
+    0% {
+        color: red;
+    }
+    14% {
+        color: purple;
+    }
+    28% {
+        color: indigo;
+    }
+    42% {
+        color: blue;
+    }
+    56% {
+        color: green;
+    }
+    70% {
+        color: yellow;
+    }
+    84% {
+        color: orange;
+    }
+    100% {
+        color: red;
+    }
+}
+
+a {
+    text-decoration-line:none ;
+    color: inherit;
+    animation: TextAnimation 30s linear infinite;
+}
+
+@keyframes TextAnimaton {
+    0% {
+        text-decoration-color: red;
+    }
+    14% {
+        text-decoration-color: purple;
+    }
+    28% {
+        text-decoration-color: indigo;
+    }
+    42% {
+        text-decoration-color: blue;
+    }
+    56% {
+        text-decoration-color: green;
+    }
+    70% {
+        text-decoration-color: yellow;
+    }
+    84% {
+        text-decoration-color: orange;
+    }
+    100% {
+        text-decoration-color: red;
+    }
+}
+
+h1 {
+    font-size: 4em;
+    margin: 0;
+    text-align: center;
+}
+p {
+    font-size: 1.5em;
+    margin: 10px 0;
+    text-align: center;
+}
+.countdown {
+    font-size: 2em;
+    margin: 20px 0;
+    text-align: center;
+    color: blacks;
+}
+.home-button {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: #ff6347;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+}
+.home-button:hover {
+    background-color: #ff4500;
+    text-align: center;
+}
