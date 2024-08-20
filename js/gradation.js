@@ -33,7 +33,7 @@ function startTimer(endTime, elementId) {
 function getNextTenOClock() {
     const now = new Date(); // 현재 날짜와 시간을 가져옴
     let nextTen = new Date(); // 다음 10시를 위한 새로운 날짜 객체 생성
-    nextTen.setHours(16, 30, 0, 0); // 22시 00분으로 설정
+    nextTen.setHours(22, 0, 0, 0); // 22시 00분으로 설정
 
     // 만약 현재 시간이 이미 22시 00분 이후라면, 다음 날로 설정
     if (now >= nextTen) {
@@ -52,7 +52,7 @@ function getNextFridayTenOClock() {
     const diffToFriday = (day <= 5) ? 5 - day : 12 - day; // 다음 금요일까지 남은 일 수 계산
 
     nextFriday.setDate(now.getDate() + diffToFriday); // 다음 금요일 날짜 설정
-    nextFriday.setHours(16, 30, 0, 0); // 22시 00분으로 설정
+    nextFriday.setHours(22, 0, 0, 0); // 22시 00분으로 설정
 
     return nextFriday; // 다음 금요일 10시 반환
 }
