@@ -65,3 +65,8 @@ window.onload = function () {
     startTimer(nextTenEndTime, 'timer'); // 'timer' 요소에 대해 타이머 시작
     startTimer(nextFridayEndTime, 'friday-timer'); // 'friday-timer' 요소에 대해 타이머 시작
 }
+
+const repeatPhrase = "집에 가고 싶다 ";
+const repeatCount = 787;
+const repeatedText = repeatPhrase.repeat(repeatCount);
+document.getElementById("repeatText").textContent = repeatedText;
