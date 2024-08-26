@@ -1,11 +1,17 @@
 /*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    background: none; /* 배경 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+    list-style: none; /* 리스트 스타일 제거 */
+    position: absolute; /* 위치를 절대값으로 설정 */
+    right: 0; /* 오른쪽 끝에 붙이기 */
+    top: 10px; /* 페이지 상단에서 약간 아래로 내리기 */
+    margin: 0;
 }
 .sf-menu li {
 	position: relative;
+    display: inline-block;
+    margin-right: 10px; /* 메뉴 간 간격 조정 */
 }
 .sf-menu ul {
 	position: absolute;
@@ -17,6 +23,7 @@
 }
 .sf-menu > li {
 	float: left;
+	border: none;
 }
 .sf-menu li:hover > ul,
 .sf-menu li.sfHover > ul {
@@ -26,6 +33,7 @@
 .sf-menu a {
 	display: block;
 	position: relative;
+    padding: 10px 15px;
 }
 .sf-menu ul ul {
 	top: 0;
@@ -41,7 +49,7 @@
 .sf-menu ul {
 	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
 	min-width: 12em; /* allow long menu items to determine submenu width */
-	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
+	width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
 .sf-menu a {
 	border-left: 1px solid #fff;
@@ -57,9 +65,9 @@
 .sf-menu li {
 	background: #BDD2FF;
 	white-space: nowrap; /* no need for Supersubs plugin */
-	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
-	-webkit-transition: background .2s;
-	transition: background .2s;
+	white-space: normal; /* ...unless you support IE7 (let it wrap) */
+	-webkit-transition: background.2s;
+	transition: background.2s;
 }
 .sf-menu ul li {
 	background: #AABDE6;
@@ -90,22 +98,19 @@
 	height: 0;
 	width: 0;
 	/* order of following 3 rules important for fallbacks to work */
-	border: 5px solid transparent;
-	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
-	border-top-color: rgba(255,255,255,.5);
+	border: none;
 }
 .sf-arrows > li > .sf-with-ul:focus:after,
 .sf-arrows > li:hover > .sf-with-ul:after,
 .sf-arrows > .sfHover > .sf-with-ul:after {
-	border-top-color: white; /* IE8 fallback colour */
+	border-top-color: none; /* IE8 fallback colour */
 }
 /* styling for right-facing arrows */
 .sf-arrows ul .sf-with-ul:after {
 	margin-top: -5px;
 	/*margin-right: -3px;*/
-	border-color: transparent;
-	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
-	border-left-color: rgba(255,255,255,.5);
+	border-color: none;
+
 }
 .sf-arrows ul li > .sf-with-ul:focus:after,
 .sf-arrows ul li:hover > .sf-with-ul:after,
