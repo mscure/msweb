@@ -87,6 +87,7 @@ function resetCalculator() {
 function updateDisplay() {
     const display = document.querySelector('.cal-screen');
     const expression = document.querySelector('.cal-expression');
+    console.log(display);
     display.value = cal.displayValue === "Divide by zero" ? cal.displayValue : formatDisplayValue(cal.displayValue);
     expression.value = cal.completedExpression;
     expression.style.visibility = 'visible';
