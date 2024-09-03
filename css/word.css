@@ -1,0 +1,39 @@
+.word-card {
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 2em; /* 영어 단어 크기 증가 */
+}
+
+ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 5px;
+    padding-left: 10px;
+    position: relative;
+    text-align: justify;
+}
+
+.test-section {
+    margin-top: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.center-align {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
