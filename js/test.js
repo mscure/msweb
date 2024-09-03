@@ -4,7 +4,7 @@ let currentIndex = 0;
 let correctAnswers = 0;
 
 // JSON 파일에서 데이터를 가져옴
-fetch('words.json')
+fetch('json/words.json')
     .then(response => response.json())
     .then(data => {
         lessons = data.lessons;
