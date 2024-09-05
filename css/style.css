@@ -340,7 +340,7 @@ figure {
 #primary-menu > li > .sf-with-ul:after {
   border: none;
   font-family: 'icomoon';
-  speak: none;
+  /*speak: none;*/                                              /*버그 이유 모르겟음*/
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -362,7 +362,7 @@ figure {
 #primary-menu > li > ul li > .sf-with-ul:after {
   border: none;
   font-family: 'icomoon';
-  speak: none;
+  /*speak: none;*/                                            /*버그 이유 모르겟음*/
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
