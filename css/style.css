@@ -1069,7 +1069,7 @@ figure {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .nav-header {
       display: flex;
       flex-direction: column;
@@ -1077,17 +1077,21 @@ figure {
   }
 
   #logo {
-      margin-bottom: 15px; /* 로고와 메뉴 사이에 간격을 조정 */
+      margin-bottom: 15px; /* 로고와 메뉴 사이의 간격 조정 */
   }
 
   .sf-menu {
       display: flex;
+      flex-direction: row; /* 가로 배치 */
       justify-content: center;
-      flex-wrap: wrap; /* 화면 크기에 따라 메뉴가 자동으로 줄바꿈되도록 설정 */
+      width: 100%; /* 메뉴가 가로 전체를 차지하도록 설정 */
+      padding: 0; /* 기본 패딩 제거 */
+      margin: 0; /* 기본 마진 제거 */
+      margin-top: 40px;
   }
 
   .sf-menu li {
-      margin: 0 10px; /* 메뉴 항목 사이의 간격을 조정 */
+      margin: 0 25px; /* 메뉴 항목 사이의 간격 조정 */
       text-align: center;
   }
 }
