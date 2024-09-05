@@ -14,7 +14,7 @@
                 {"word": "dilemma", "meanings": ["딜레마","진퇴양난"]},
                 {"word": "reinforce", "meanings": ["강화하다","보강하다"]},
                 {"word": "aggressive", "meanings": ["공격적인","매우 적극적인"]},
-                {"word": "fade", "meanings": ["서서리 사라지다","희미해지다"]},
+                {"word": "fade", "meanings": ["서서히 사라지다","희미해지다"]},
                 {"word": "realm", "meanings": ["영역","왕국"]},
                 {"word": "inherit", "meanings": ["물려받다","유전하다"]},
                 {"word": "liberate", "meanings": ["해방시키다","자유롭게 해주다"]},
@@ -76,6 +76,13 @@
                 {"word": "", "meanings": []},
                 {"word": "", "meanings": []},
                 {"word": "", "meanings": []},
+                {"word": "", "meanings": []},
+                {"word": "", "meanings": []}
+            ]
+        },
+        {
+            "lessonName": "test",
+            "words": [
                 {"word": "", "meanings": []},
                 {"word": "", "meanings": []}
             ]

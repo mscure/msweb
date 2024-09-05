@@ -1067,3 +1067,27 @@ figure {
   z-index: 9999;
   background: url(../images/hourglass.svg) center no-repeat #222222;
 }
+
+
+@media (max-width: 768px) {
+  .nav-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  #logo {
+      margin-bottom: 15px; /* 로고와 메뉴 사이에 간격을 조정 */
+  }
+
+  .sf-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* 화면 크기에 따라 메뉴가 자동으로 줄바꿈되도록 설정 */
+  }
+
+  .sf-menu li {
+      margin: 0 10px; /* 메뉴 항목 사이의 간격을 조정 */
+      text-align: center;
+  }
+}
