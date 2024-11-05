@@ -1,0 +1,114 @@
+
+#upper {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    top: 0;
+}
+
+#lower {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    top: 0;
+}
+
+/* star.css */
+#cover {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* 메인 콘텐츠 뒤에 표시 */
+    overflow: hidden;
+}
+
+.star-sm, .star-md, .star-lg {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 2s ease-in, opacity 2s ease-in; /* 애니메이션을 위한 속성 */
+}
+
+.star-sm {
+    width: 2px;
+    height: 2px;
+}
+
+.star-md {
+    width: 3px;
+    height: 3px;
+}
+
+.star-lg {
+    width: 4px;
+    height: 4px;
+}
+
+/* 별똥별 애니메이션 */
+@keyframes shooting-star {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+        box-shadow: 0 0 10px 2px white, -10px -10px 20px rgba(255, 255, 255, 0.6);
+    }
+    70% {
+        opacity: 0.8;
+        transform: translate(70vw, 70vh) scale(1.5); /* 중간 위치와 크기 조정 */
+        box-shadow: 0 0 20px 6px white, -20px -20px 40px rgba(255, 255, 255, 0.4);
+    }
+    100% {
+        transform: translate(100vw, 100vh) scale(2); /* 최종 위치와 더 큰 크기 */
+        opacity: 0;
+        box-shadow: 0 0 30px 10px white, -30px -30px 60px rgba(255, 255, 255, 0.2);
+    }
+}
+
+.shooting {
+    animation: shooting-star 2s ease-in forwards;
+}
+
+
+.loaded {
+    animation: loading 0.6s 1 ease-out alternate;
+    background: black;
+    background: -webkit-linear-gradient(bottom, rgba(10,20,20,1), rgba(0,16,54,0.9));
+    background: -o-linear-gradient(bottom, rgba(10,20,20,1), rgba(0,16,54,0.9));
+    background: -moz-linear-gradient(bottom, rgba(10,20,20,1), rgba(0,16,54,0.9));
+    background: linear-gradient(bottom, rgba(10,20,20,1), rgba(0,16,54,0.9));
+}
+
+@keyframes loading{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 추가된 CSS */
+@keyframes grow {
+    0% {
+        transform: scale(1); /* 시작 크기 */
+        opacity: 1; /* 시작 투명도 */
+    }
+    100% {
+        transform: scale(10); /* 커진 크기 */
+        opacity: 1; /* 사라질 투명도 */
+    }
+}
+
+/* 추가된 CSS */
+@keyframes growAndShake {
+    0% {
+        transform: translate(-50%, -50%) scale(1); /* 시작 크기 */
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5) rotate(3deg); /* 커지면서 약간 회전 */
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2); /* 최종 크기 */
+    }
+}

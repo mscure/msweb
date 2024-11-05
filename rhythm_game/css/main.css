@@ -1,0 +1,64 @@
+* {
+    font-family: "Itim", cursive;
+    color: white;
+}
+
+.title {
+    text-align: center;
+    margin-top: 70px;
+    font-size: 80px;
+}
+
+.start, .config, .about {
+    margin-top: 75px;
+}
+
+.main_screen {
+    width: 70%;
+    margin-left: 300px;
+}
+
+.start_button {
+    text-align: left;
+    font-size: 50px;
+    padding: 40px;
+    padding-left: 100px;
+    width: 100%;
+    background-color: blueviolet;
+    border: none;
+    cursor: pointer;
+}
+
+.start_button:hover {
+    
+}
+
+.config_button {
+    text-align: left;
+    font-size: 50px;
+    padding: 40px;
+    padding-left: 100px;
+    width: 100%;
+    background-color: blue;
+    border: none;
+    cursor: pointer;
+}
+
+.config_button:hover {
+
+}
+
+.about_button {
+    text-align: left;
+    font-size: 50px;
+    padding: 40px;
+    padding-left: 100px;
+    width: 100%;
+    background-color: gray;
+    border: none;
+    cursor: pointer;
+}
+
+.about_button:hover {
+
+}

@@ -1,0 +1,90 @@
+* {
+    font-family: "Itim", cursive;
+    color: white;
+}
+
+.back {
+    border-radius: 10px;
+    border: none;
+    font-size: 50px;
+    text-align: left;
+    background-color: gray;
+    padding-left: 10px;
+    width: 130px;
+    position: absolute;
+    cursor: pointer;
+}
+
+body {
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 70px;
+    font-size: 80px;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-left: 20%;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.colorbutton {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+}
+
+.tile-preview {
+    position: relative;
+    margin-left: 40%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid red;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.savebutton {
+    margin-top: 30px;
+    font-size: 30px;
+    width: 35%;
+    margin-left: 32%;
+}
+
+/* 가운데부터 채워지는 애니메이션 */
+.fill {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    animation: fillAnimation 2s linear forwards;
+}
+
+@keyframes fillAnimation {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}

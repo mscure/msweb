@@ -1,0 +1,94 @@
+* {
+    background-color: black;
+    color: white;
+    font-family: "Itim", cursive;
+}
+/* styles.css */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+#countdown {
+    text-align: center;
+    font-size: 200px;
+    
+}
+
+#main-page {
+    font-size: 70px;
+}
+
+#music-list {
+    cursor: pointer;
+}
+
+#audio-player {
+    display: none;
+}
+
+#health-bar-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    height: 20px;
+    background-color: #ccc;
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+#health-bar {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    border-radius: 10px;
+    transition: width 0.2s;
+}
+
+#score {
+    font-size: 80px;
+    text-align: center;
+}
+
+#game-area {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+}
+
+.note {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid red;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 가운데부터 채워지는 애니메이션 */
+.fill {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    animation: fillAnimation 5s linear forwards;
+}
+
+@keyframes fillAnimation {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}

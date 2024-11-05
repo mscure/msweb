@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Game - Game</title>
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.0/Tone.js"></script>
+</head>
+<body>
+    <div id="game-page" style="display: none;">
+        <div id="health-bar-container">
+            <div id="health-bar"></div>
+        </div>
+        <div id="score">Score: 0</div>
+        <audio id="audio-player" controls></audio>
+        <div id="countdown">3</div>
+        <div id="game-area"></div>
+    </div>
+    <script src="js/game.js"></script>
+    <script src="js/drum.js"></script>
+    <script src="js/hat.js"></script>
+</body>
+</html>

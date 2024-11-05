@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Game - Main</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/star.css"> <!-- 별 배경 CSS 추가 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="cover">
+        <!-- 별 배경이 나타나는 레이어 -->
+        <div id="upper"></div>
+        <div id="lower"></div>
+    </div>
+    
+    <!-- 리듬 게임 메인 화면 -->
+    <div class="title">
+        <span>Rhythm Game</span>
+    </div>
+    <div class="main_screen">
+        <div class="start">
+            <button class="start_button" onclick="location.href='list.html'">Start</button>
+        </div>
+        <div class="config">
+            <button class="config_button" onclick="location.href='config.html'">Config</button>
+        </div>
+        <div class="about">
+            <button class="about_button" onclick="location.href='about.html'">About</button>
+        </div>
+    </div>
+
+    <!-- jQuery 및 별 배경 JavaScript 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/star.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/config.css">
+    <link rel="stylesheet" href="css/star.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="cover">
+        <!-- 별 배경이 나타나는 레이어 -->
+        <div id="upper"></div>
+        <div id="lower"></div>
+    </div>
+    <h1>Game Settings</h1>
+    <button class="back" onclick="window.location.href='index.html'">Back</button>
+
+    <div>
+        <label>Inner Tile Color:</label>
+        <button class="colorbutton" onclick="changeColor(-1)">&#9664;</button>
+        <span id="color-name"></span>
+        <button class="colorbutton" onclick="changeColor(1)">&#9654;</button>
+    </div>
+    <div>
+        <label>Outer Tile Color:</label>
+        <button class="colorbutton" onclick="changeColor(-1)">&#9664;</button>
+        <span id="color-name"></span>
+        <button class="colorbutton" onclick="changeColor(1)">&#9654;</button>
+    </div>
+
+    <!-- 타일 미리보기 -->
+    <div id="tile-preview" class="tile-preview"></div>
+
+    <div>
+        <label for="volume">Sound Volume:</label>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+    </div>
+
+    <button class="savebutton" onclick="saveSettings()">Save Settings</button>
+
+    <script src="js/config.js"></script>
+    <!-- jQuery 및 별 배경 JavaScript 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/star.js"></script>
+</body>
+</html>
