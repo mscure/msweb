@@ -1,7 +1,7 @@
 const musicList = [
     { name: "PLum - R", file: "music/plum-r.mp3", timingFile: "json/plum-r.json" },
-    { name: "Song 2", file: "music/song2.mp3", timingFile: "music/song2.json" },
-    { name: "Song 3", file: "music/song3.mp3", timingFile: "music/song3.json" }
+    { name: "", file: "music/", timingFile: "json/.json" },
+    { name: "", file: "music/", timingFile: "json/.json" }
 ];
 
 // 음악 목록 표시
