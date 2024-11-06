@@ -112,7 +112,7 @@ function moveStarToCenter() {
 createStars(); // 페이지 로드 시 최초로 별 생성
 
 // 20초마다 별똥별 생성
-setInterval(createShootingStar, 00);
+setInterval(createShootingStar, 10000);
 
 // 윈도우 크기가 바뀔 때마다 별 생성 (필요시)
 $(window).on("resize", function() {
