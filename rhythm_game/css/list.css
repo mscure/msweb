@@ -1,0 +1,39 @@
+* {
+    background-color: black;
+    color: white;
+    font-family: "Itim", cursive;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.back {
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 50px;
+    text-align: left;
+    background-color: gray;
+    padding-left: 10px;
+    width: 130px;
+    position: absolute;
+    cursor: pointer;
+    margin-left: 20px;
+    align-items: left;
+}
+
+#main-page {
+    font-size: 70px;
+    align-items: center;
+    text-align: center  ;
+}
+
+#music-list {
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    list-style: none;
+}

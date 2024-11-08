@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game Settings</title>
 
     <link rel="stylesheet" href="css/config.css">
     <link rel="stylesheet" href="css/star.css">
@@ -12,39 +12,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 </head>
 <body>
+    <button class="back" onclick="window.location.href='index.html'">Back</button>
     <div id="cover">
-        <!-- 별 배경이 나타나는 레이어 -->
         <div id="upper"></div>
         <div id="lower"></div>
     </div>
     <h1>Game Settings</h1>
-    <button class="back" onclick="window.location.href='index.html'">Back</button>
-
-    <div>
-        <label>Inner Tile Color:</label>
-        <button class="colorbutton" onclick="changeColor(-1)">&#9664;</button>
-        <span id="color-name"></span>
-        <button class="colorbutton" onclick="changeColor(1)">&#9654;</button>
+    
+    <!-- F 키 색상 설정 -->
+    <div class="f-config">
+        <h2>Set Colors for "F" Key</h2>
+        <label>Inner Color:&nbsp;</label>
+        <button class="colorbutton" onclick="changeColor('f', -1, 'inner')">&#9664;</button>
+        <span id="f-inner-color-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="colorbutton" onclick="changeColor('f', 1, 'inner')">&#9654;</button>
+        <br>
+        <label>Outer Color:</label>
+        <button class="colorbutton" onclick="changeColor('f', -1, 'outer')">&#9664;</button>
+        <span id="f-outer-color-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="colorbutton" onclick="changeColor('f', 1, 'outer')">&#9654;</button>
+        <br>
+        <label>Text Color:&nbsp;&nbsp;&nbsp;</label>
+        <button class="colorbutton" onclick="changeColor('f', -1, 'text')">&#9664;</button>
+        <span id="f-text-color-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="colorbutton" onclick="changeColor('f', 1, 'text')">&#9654;</button>
+        <br>
+        <div id="tile-preview-f" class="tile-preview">
+            <div class="innertext innertext-f">F</div>
+            <div class="fill fill-f"></div>
+        </div>
     </div>
-    <div>
-        <label>Outer Tile Color:</label>
-        <button class="colorbutton" onclick="changeColor(-1)">&#9664;</button>
-        <span id="color-name"></span>
-        <button class="colorbutton" onclick="changeColor(1)">&#9654;</button>
+
+    <!-- J 키 색상 설정 -->
+    <div class="j-config">
+        <h2>Set Colors for "J" Key</h2>
+        <label>Inner Color:&nbsp;</label>
+        <button class="colorbutton" onclick="changeColor('j', -1, 'inner')">&#9664;</button>
+        <span id="j-inner-color-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="colorbutton" onclick="changeColor('j', 1, 'inner')">&#9654;</button>
+        <br>
+        <label>Outer Color:</label>
+        <button class="colorbutton" onclick="changeColor('j', -1, 'outer')">&#9664;</button>
+        <span id="j-outer-color-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="colorbutton" onclick="changeColor('j', 1, 'outer')">&#9654;</button>
+        <br>
+        <label>Text Color:&nbsp;&nbsp;&nbsp;</label>
+        <button class="colorbutton" onclick="changeColor('j', -1, 'text')">&#9664;</button>
+        <span id="j-text-color-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button class="colorbutton" onclick="changeColor('j', 1, 'text')">&#9654;</button>
+        <br>
+        <div id="tile-preview-j" class="tile-preview">
+            <div class="innertext innertext-j">J</div>
+            <div class="fill fill-j"></div>
+        </div>
     </div>
 
-    <!-- 타일 미리보기 -->
-    <div id="tile-preview" class="tile-preview"></div>
-
-    <div>
-        <label for="volume">Sound Volume:</label>
-        <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+    <!-- 사운드 볼륨 설정 -->
+    <div class="volume-config">
+        <label for="volume">Volume:</label>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5" onchange="changeVolume()">
     </div>
 
     <button class="savebutton" onclick="saveSettings()">Save Settings</button>
 
     <script src="js/config.js"></script>
-    <!-- jQuery 및 별 배경 JavaScript 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/star.js"></script>
 </body>

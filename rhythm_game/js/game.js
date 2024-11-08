@@ -1,7 +1,9 @@
+// game.js
+
 const musicList = [
     { name: "PLum - R", file: "music/plum-r.mp3", timingFile: "json/plum-r.json" },
-    { name: "Song 2", file: "music/song2.mp3", timingFile: "music/song2.json" },
-    { name: "Song 3", file: "music/song3.mp3", timingFile: "music/song3.json" }
+    { name: "Song 2", file: "music/song2.mp3", timingFile: "json/song2.json" },
+    { name: "Song 3", file: "music/song3.mp3", timingFile: "json/song3.json" }
 ];
 
 let score = 0;
@@ -31,13 +33,11 @@ function getCookie(name) {
     const nameEQ = name + "=";
     const ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
     }
     return null;
 }
-
 
 // 게임 시작
 async function startGame() {
@@ -50,7 +50,7 @@ async function startGame() {
         gamePage.style.display = "block";
         resetGame();
 
-        let timeLeft = 2; // 3초???????????
+        let timeLeft = 2; // 3초 카운트다운
         const timerDisplay = document.getElementById('countdown');
 
         const countdown = setInterval(function() {
@@ -74,7 +74,8 @@ async function startGame() {
         setTimeout(() => {
             audioPlayer.play();
             startTiming();
-            timerDisplay.style.display="none";
+            setTimeout(() => {audioPlayer.play()},2000);
+            timerDisplay.style.display = "none";
         }, 3764);
     }
 }
@@ -89,6 +90,74 @@ function startTiming() {
     });
 }
 
+function getRandomPosition() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+    return { x, y };
+}
+
+// 타일 생성 함수
+function createNoteTile(key) {
+    // 쿠키에서 타일 색상 정보 불러오기
+    const tileInnerColorF = getCookie("tileInnerColorF");
+    const tileOuterColorF = getCookie("tileOuterColorF");
+    const textColorF = getCookie("textColorF");
+    const tileInnerColorJ = getCookie("tileInnerColorJ");
+    const tileOuterColorJ = getCookie("tileOuterColorJ");
+    const textColorJ = getCookie("textColorJ");
+
+    const note = document.createElement("div");
+    note.classList.add("note");
+    note.classList.add("note-" + key);
+
+    const position = getRandomPosition();
+    note.style.left = `${position.x}px`;
+    note.style.top = `${position.y}px`;
+    note.dataset.key = key;
+
+    if (key === "f") {
+        // F 키에 대한 타일 스타일 적용
+        note.style.borderColor = tileOuterColorF;
+
+        const textF = document.createElement("div");
+        textF.classList.add("note-f-text");
+        textF.textContent = "F";
+        textF.style.color = textColorF;
+        note.appendChild(textF);
+
+        const fillF = document.createElement("div");
+        fillF.classList.add("fill", "fill-f");
+        fillF.style.backgroundColor = tileInnerColorF;
+        note.appendChild(fillF);
+
+    } else if (key === "j") {
+        // J 키에 대한 타일 스타일 적용
+        note.style.borderColor = tileOuterColorJ;
+
+        const textJ = document.createElement("div");
+        textJ.classList.add("note-j-text");
+        textJ.textContent = "J";
+        textJ.style.color = textColorJ;
+        note.appendChild(textJ);
+
+        const fillJ = document.createElement("div");
+        fillJ.classList.add("fill", "fill-j");
+        fillJ.style.backgroundColor = tileInnerColorJ;
+        note.appendChild(fillJ);
+    }
+
+    gameArea.appendChild(note);
+
+    // 일정 시간 후 타일 제거
+    setTimeout(() => {
+        if (gameArea.contains(note)) {
+            note.remove();
+            decreaseHealth(10); // 타이밍 미스 시 체력 감소
+        }
+    }, 2000); // 2초 동안 타일 유지
+}
+
+
 // 체력 감소 함수
 function decreaseHealth(amount) {
     health -= amount;
@@ -100,41 +169,6 @@ function decreaseHealth(amount) {
     }
 }
 
-function getRandomPosition() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 100);
-    return { x, y };
-}
-
-// 게임 시작 함수 내 타일 색상, 텍스트 색상 적용
-function createNoteTile(key) {
-    const tileColor = getCookie("tileColor") || "#ff0000";  // 기본 색상은 빨간색
-    const textColor = getCookie("textColor") || "#00ffff";  // 기본 보색은 청록색
-
-    const note = document.createElement("div");
-    note.classList.add("note");
-    const position = getRandomPosition();
-    note.style.left = `${position.x}px`;
-    note.style.top = `${position.y}px`;
-    note.dataset.key = key;
-    note.textContent = key.toUpperCase();
-    note.style.color = textColor;            // 텍스트 색상
-
-    const fill = document.createElement("div");
-    fill.classList.add("fill");
-    fill.style.backgroundColor = tileColor;  // 가운데 채워지는 색상도 동일
-    note.appendChild(fill);
-    gameArea.appendChild(note);
-
-    // 일정 시간 후 타일 제거
-    setTimeout(() => {
-        if (gameArea.contains(note)) {
-            note.remove();
-            decreaseHealth(10); // 타이밍 미스 시 체력 감소
-        }
-    }, 10000); // 2초 동안 타일 유지
-}
-
 // 키 입력 이벤트 리스너 - 타이밍 맞추기
 document.addEventListener("keydown", (event) => {
     const notes = document.getElementsByClassName("note");
@@ -142,16 +176,10 @@ document.addEventListener("keydown", (event) => {
         const note = notes[0];
         const noteKey = note.dataset.key;
 
-        // 키가 맞으면 점수 추가 및 타일 제거, 틀리면 체력 감소
         if (event.key === noteKey) {
             note.remove();
             score += 100;
             scoreDisplay.textContent = "Score: " + score;
-            if (event.key == "f"){
-                playDrum();
-            } else {
-                playhat();
-            }
         } else {
             decreaseHealth(5); // 틀린 키 입력 시 체력 감소
         }
@@ -164,8 +192,6 @@ document.addEventListener("keydown", (event) => {
 function applySettings() {
     const audio = document.getElementById("audio-player");
     const volume = parseFloat(getCookie("volume") || "0.5");
-
-    // 볼륨 조절
     audio.volume = volume;
 }
 

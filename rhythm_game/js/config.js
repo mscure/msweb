@@ -7,16 +7,22 @@ const colors = [
 ];
 
 const textColors = [
-    { name: "Cyan", value: "#00ffff" },   
-    { name: "Orange", value: "#ff7f00" },   
-    { name: "Magenta", value: "#ff00ff" },   
-    { name: "Yellow-Green", value: "#7fff00" },
-    { name: "Blue", value: "#0000ff" }        
+    { name: "White", value: "#ffffff" },
+    { name: "Black", value: "#000000" },
+    { name: "Gray", value: "#808080" },
+    { name: "Pink", value: "#ffc0cb" },
+    { name: "Orange", value: "#ff7f00" }
 ];
 
-let currentColorIndex = 0;
-let previewInterval;
-const gameArea = document.getElementById("tile-preview");
+// 기본 색상 인덱스
+let currentInnerColorIndexF = 0;
+let currentOuterColorIndexF = 1;
+let currentTextColorIndexF = 0;
+let currentInnerColorIndexJ = 2;
+let currentOuterColorIndexJ = 3;
+let currentTextColorIndexJ = 1;
+var currentvolume = document.getElementById("volume").value;
+const gameArea = document.getElementsByClassName("tile-preview");
 
 // 쿠키에서 설정값 가져오는 함수
 function getCookie(name) {
@@ -29,79 +35,148 @@ function getCookie(name) {
     return null;
 }
 
-// 쿠키에서 설정 불러오기
-function loadSettings() {
-    const tileColor = getCookie("tileColor") || colors[0].value;
-    const textColor = getCookie("textColor") || textColors[0].value;
+//rgb to hex
+function rgbStringToHex(rgb) {
+    // 문자열에서 숫자 부분만 추출
+    const rgbValues = rgb.match(/\d+/g).map(Number);
+  
+    // RGB 배열을 HEX로 변환
+    return (
+      "#" +
+      ((1 << 24) | (rgbValues[0] << 16) | (rgbValues[1] << 8) | rgbValues[2])
+        .toString(16)
+        .slice(1)
+        .toUpperCase()
+    );
+}  
 
-    // 현재 선택된 색상과 보색에 따라 인덱스 설정
-    currentColorIndex = colors.findIndex(color => color.value === tileColor);
+// 색상 프리뷰 업데이트 함수 
+function updateTilePreview() {
+    // F키 미리보기
+    const tilePreviewF = document.getElementById("tile-preview-f");
+    const tilefillf = document.getElementsByClassName("fill-f");
+    const tiletextf = document.getElementsByClassName("innertext-f");
+    const innerColorNamef = document.getElementById("f-inner-color-name");
+    const outerColorNamef = document.getElementById("f-outer-color-name");
+    const textColorNamef = document.getElementById("f-text-color-name");
+    
+    //outer
+    tilePreviewF.style.border = "4px solid "+ colors[currentOuterColorIndexF].value;
+    outerColorNamef.style.backgroundColor = colors[currentOuterColorIndexF].value;
 
-    // 설정 페이지 초기화
-    document.getElementById("color-name").style.backgroundColor = tileColor;
-    document.getElementById("volume").value = getCookie("volume") || "0.5";
-    updateTilePreview();
+    //inner
+    if (tilefillf.length > 0) {
+        const currentfillcolorf = rgbStringToHex(tilefillf[0].style.backgroundColor);
+        tilefillf[0].style.backgroundColor = colors[currentInnerColorIndexF].value;
+        innerColorNamef.style.backgroundColor = colors[currentInnerColorIndexF].value;
+        if (currentfillcolorf != colors[currentInnerColorIndexF].value.toUpperCase()) {
+            tilefillf[0].classList.remove("fill");
+            setTimeout(function() {
+                tilefillf[0].classList.add("fill");
+            }, 20);
+        }
+    }
+
+    //text
+    if (tiletextf.length > 0) {
+        tiletextf[0].style.color = textColors[currentTextColorIndexF].value;
+        textColorNamef.style.backgroundColor = textColors[currentTextColorIndexF].value;
+    }
+
+    // J키 미리보기
+    const tilePreviewJ = document.getElementById("tile-preview-j");
+    const tilefillj = document.getElementsByClassName("fill-j");
+    const tiletextj = document.getElementsByClassName("innertext-j");
+    const innerColorNamej = document.getElementById("j-inner-color-name");
+    const outerColorNamej = document.getElementById("j-outer-color-name");
+    const textColorNamej = document.getElementById("j-text-color-name");
+
+    //outer
+    tilePreviewJ.style.border = "4px solid "+ colors[currentOuterColorIndexJ].value;
+    outerColorNamej.style.backgroundColor = colors[currentOuterColorIndexJ].value;
+
+    //inner
+    if (tilefillj.length > 0) {
+        const currentfillcolorj = rgbStringToHex(tilefillj[0].style.backgroundColor);
+        tilefillj[0].style.backgroundColor = colors[currentInnerColorIndexJ].value;
+        innerColorNamej.style.backgroundColor = colors[currentInnerColorIndexJ].value;
+        
+        if (currentfillcolorj != colors[currentInnerColorIndexJ].value.toUpperCase()) {
+            tilefillj[0].classList.remove("fill");
+            setTimeout(function() {
+                tilefillj[0].classList.add("fill");
+            }, 20);
+        }
+    }
+
+    //text
+    if (tiletextj.length > 0) {
+        tiletextj[0].style.color = textColors[currentTextColorIndexJ].value;
+        textColorNamej.style.backgroundColor = textColors[currentTextColorIndexJ].value;
+    }
 }
 
-// 초기 설정 적용
-function updateTilePreview() {
-    const colorName = document.getElementById("color-name");
-    colorName.textContent = colors[currentColorIndex].name;
-    colorName.style.backgroundColor = colors[currentColorIndex].value;
+function changeVolume() {
+    currentvolume = document.getElementById("volume").value;
 }
 
 // 색상 변경 함수
-function changeColor(direction) {
-    currentColorIndex += direction;
-    if (currentColorIndex < 0) {
-        currentColorIndex = colors.length - 1;
-    } else if (currentColorIndex >= colors.length) {
-        currentColorIndex = 0;
+function changeColor(key, direction, type) {
+    if (key === 'f') {
+        if (type === 'text') {
+            currentTextColorIndexF = (currentTextColorIndexF + direction + textColors.length) % textColors.length;
+        } else if (type === 'inner') {
+            currentInnerColorIndexF = (currentInnerColorIndexF + direction + colors.length) % colors.length;
+        } else if (type === 'outer') {
+            currentOuterColorIndexF = (currentOuterColorIndexF + direction + colors.length) % colors.length;
+        }
+    } else if (key === 'j') {
+        if (type === 'text') {
+            currentTextColorIndexJ = (currentTextColorIndexJ + direction + textColors.length) % textColors.length;
+        } else if (type === 'inner') {
+            currentInnerColorIndexJ = (currentInnerColorIndexJ + direction + colors.length) % colors.length;
+        } else if (type === 'outer') {
+            currentOuterColorIndexJ = (currentOuterColorIndexJ + direction + colors.length) % colors.length;
+        }
     }
     updateTilePreview();
 }
 
 // 설정 저장 함수
 function saveSettings() {
-    const volume = document.getElementById("volume").value;
-    const tileColor = colors[currentColorIndex].value;
-    const textColor = textColors[currentColorIndex].value; // 선택된 타일 색의 보색
-
-    // 쿠키에 설정 값 저장
-    document.cookie = `tileColor=${tileColor}; path=/`;
-    document.cookie = `textColor=${textColor}; path=/`;
-    document.cookie = `volume=${volume}; path=/`;
-
+    document.cookie = `tileInnerColorF=${colors[currentInnerColorIndexF].value}; path=/`;
+    document.cookie = `tileOuterColorF=${colors[currentOuterColorIndexF].value}; path=/`;
+    document.cookie = `textColorF=${textColors[currentTextColorIndexF].value}; path=/`;
+    document.cookie = `tileInnerColorJ=${colors[currentInnerColorIndexJ].value}; path=/`;
+    document.cookie = `tileOuterColorJ=${colors[currentOuterColorIndexJ].value}; path=/`;
+    document.cookie = `textColorJ=${textColors[currentTextColorIndexJ].value}; path=/`;
+    document.cookie = `volume=${currentvolume}; path=/`;
     alert("Settings saved!");
 }
 
-// 저장된 쿠키에서 설정값 불러오기
+// 설정 불러오기
 function loadSettings() {
-    const savedTileColor = getCookie("tileColor");
-    const savedVolume = getCookie("volume");
+    const tileInnerColorF = getCookie("tileInnerColorF") || colors[0].value;
+    const tileOuterColorF = getCookie("tileOuterColorF") || colors[1].value;
+    const textColorF = getCookie("textColorF") || textColors[0].value;
+    const tileInnerColorJ = getCookie("tileInnerColorJ") || colors[2].value;
+    const tileOuterColorJ = getCookie("tileOuterColorJ") || colors[3].value;
+    const textColorJ = getCookie("textColorJ") || textColors[1].value;
+    const volume = parseFloat(getCookie("volume") || "0.5");
+    const tilefillf = document.getElementsByClassName("fill-f");
+    const tilefillj = document.getElementsByClassName("fill-j");
 
-    // 색상 불러오기
-    if (savedTileColor) {
-        const colorIndex = colors.findIndex(color => color.value === savedTileColor);
-        if (colorIndex !== -1) {
-            currentColorIndex = colorIndex;
-        }
-    }
+    currentInnerColorIndexF = colors.findIndex(color => color.value === tileInnerColorF);
+    currentOuterColorIndexF = colors.findIndex(color => color.value === tileOuterColorF);
+    currentTextColorIndexF = textColors.findIndex(color => color.value === textColorF);
+    currentInnerColorIndexJ = colors.findIndex(color => color.value === tileInnerColorJ);
+    currentOuterColorIndexJ = colors.findIndex(color => color.value === tileOuterColorJ);
+    currentTextColorIndexJ = textColors.findIndex(color => color.value === textColorJ);
+    document.getElementById("volume").value = volume;
 
-    // 볼륨 불러오기
-    if (savedVolume) {
-        document.getElementById("volume").value = savedVolume;
-    }
-
+    tilefillf[0].style.backgroundColor = colors[currentInnerColorIndexF].value;
+    tilefillj[0].style.backgroundColor = colors[currentInnerColorIndexJ].value;
     updateTilePreview();
-}
-
-// 미리보기 모드에서 타일을 무한히 생성
-function startPreview() {
-    previewInterval = setInterval(() => {
-        const randomKey = ""; // 미리보기에서는 임의 키 설정
-        createNoteTile(randomKey);
-    }, 2000); // 2초마다 타일 생성
 }
 
 // 타일 생성 함수
@@ -110,12 +185,22 @@ function createNoteTile(key) {
     note.classList.add("note");
     note.dataset.key = key;
     note.textContent = key.toUpperCase();
-    gameArea.appendChild(note);
 
     const fill = document.createElement("div");
     fill.classList.add("fill");
-    fill.style.backgroundColor = colors[currentColorIndex].value; // 타일 색상 적용
+
+    if (key === 'f') {
+        fill.style.backgroundColor = colors[currentInnerColorIndexF].value;
+        note.style.backgroundColor = colors[currentOuterColorIndexF].value;
+        note.style.color = textColors[currentTextColorIndexF].value;
+    } else if (key === 'j') {
+        fill.style.backgroundColor = colors[currentInnerColorIndexJ].value;
+        note.style.backgroundColor = colors[currentOuterColorIndexJ].value;
+        note.style.color = textColors[currentTextColorIndexJ].value;
+    }
+
     note.appendChild(fill);
+    gameArea.appendChild(note);
 
     setTimeout(() => {
         if (gameArea.contains(note)) {
@@ -124,7 +209,6 @@ function createNoteTile(key) {
     }, 2000); // 2초 동안 타일 유지
 }
 
-// 페이지 로드 시 초기 설정과 색상 미리보기 적용
+// 페이지 로드 시 설정 불러오기
 loadSettings();
-startPreview();
-updateTilePreview();
+//updateTilePreview();
